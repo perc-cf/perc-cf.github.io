@@ -92,7 +92,7 @@ article {
     <body onload="start()" style="background-color:#323232">
         <div style="text-align: center;">
         <h1 id="info">Loading...</h1>
-        <h3>Want to contribute? Create an account <a style="color: lightblue;" href="index.html">here.</a></h3>
+        <h3 id="desc">Loading...</h3>
         </div><br>
 <label id="test"></label>
   </body>
@@ -122,6 +122,7 @@ const post = data.split("!!!newpost!!!")
 const posts = post.reverse()
 let pagenumber = posts.length
 document.getElementById("info").innerHTML = ret.data.url + " | " + (pagenumber - 1) + " Commits";
+document.getElementById("desc").innerHTML = "<i>" + ret.data.description + "</i>"
 console.log(posts)
 for (let i = 0; i < posts.length; i++) {
 pagenumber = pagenumber - 1
