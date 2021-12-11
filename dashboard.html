@@ -127,7 +127,7 @@ button:hover {
     <textarea maxlength="250" style="width: 100%; resize: vertical; font-family:'Red Hat Text'; padding: 15px; margin: 5px 0 22px 0; display: inline-block; border: none; background: #303030; caret-color: white; color: white" placeholder="Enter something to post..." name="post" id="post" required></textarea>
   
     <div class="clearfix">
-      <button type="button" onclick="createpost()" class="signupbtn">Add to Page</button>
+      <button type="button" onclick="createchat()" class="signupbtn">Add to Page</button>
     </div>
   </div>
 </form><br>
@@ -315,6 +315,38 @@ console.log(ret)
   alert("User not found. If you are seeing this, someone has already deleted your account whilst you are on this page.")
 });
 
+  }
+  
+  function creatchat(){
+    client.query(
+  q.Get(
+    q.Match(q.Index('get_url'), document.getElementById("chatname").value)
+  )
+)
+.then(function(ret){ 
+     
+alert("This name is taken!")
+
+})
+  
+.catch(function(e){
+
+
+
+  let date = new Date();
+    client.query(
+  q.Create(
+    q.Collection('abforum'),
+    { data: { url: document.getElementById("chatname").value.replace(/\s/g, "-")},
+  )
+)
+.then(function(ret){
+
+     console.log(ret)
+    })
+
+});
+    
   }
 </script>
 
