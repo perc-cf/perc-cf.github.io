@@ -104,11 +104,14 @@ button:hover {
     <br>  
   <form style="border:1px solid #ccc">
   <div class="container">
-    <h1 style="color:white">Create Chat</h1>
+    <h1 style="color:white">Create Server</h1>
     <p style="color:white">Here you can create a chat server.</p>
     <hr>    
-     <label style="color:white" for="chat"><b>Chat URL</b></label>
+     <label style="color:white" for="chat"><b>Server URL</b></label>
       <input type="text" placeholder="Enter a URL" name="chatname" id="chatname" required>
+    
+    <label style="color:white" for="chatdesc"><b>Server Description</b></label>
+      <input type="text" placeholder="Enter a URL" name="chatdesc" id="chatdesc" required>
   
     <div class="clearfix">
       <button type="button" onclick="createserver()" class="signupbtn">Create</button>
@@ -119,12 +122,12 @@ button:hover {
 <form style="border:1px solid #ccc">
   <div class="container">
     <h1 style="color:white">Create Post</h1>
-    <p style="color:white">Here you can contribute to a chat.</p>
+    <p style="color:white">Here you can contribute to a server.</p>
     <hr>    
-     <label style="color:white" for="chat"><b>Chat Name</b></label>
+     <label style="color:white" for="chat"><b>Server Name</b></label>
       <input type="text" placeholder="Enter a URL" name="chat" id="chat" required>
     <label style="color:white" for="post"><b>Content</b></label>
-    <textarea maxlength="250" style="width: 100%; resize: vertical; font-family:'Red Hat Text'; padding: 15px; margin: 5px 0 22px 0; display: inline-block; border: none; background: #303030; caret-color: white; color: white" placeholder="Enter something to post..." name="post" id="post" required></textarea>
+    <textarea style="width: 100%; resize: vertical; font-family:'Red Hat Text'; padding: 15px; margin: 5px 0 22px 0; display: inline-block; border: none; background: #303030; caret-color: white; color: white" placeholder="Enter something to post..." name="post" id="post" required></textarea>
   
     <div class="clearfix">
       <button type="button" onclick="createpost()" class="signupbtn">Add to Page</button>
@@ -337,12 +340,13 @@ alert("This name is taken!")
     client.query(
   q.Create(
     q.Collection('abforum'),
-    { data: { url: document.getElementById("chatname").value.replace(/\s/g, "-")}},
+    { data: { url: document.getElementById("chatname").value.replace(/\s/g, "-"), description: document.getElementById("chatdesc").value.replace(/\n/g, "linebreak")}},
   )
 )
 .then(function(ret){
 
      console.log(ret)
+      alert("Your server has been made.")
     })
 
 });
