@@ -121,16 +121,16 @@ let html = ""
 const post = data.split("!!!newpost!!!")
 const posts = post.reverse()
 let pagenumber = posts.length
-document.getElementById("info").innerHTML = "FraudBibleOnline - " + (pagenumber - 1) + " pages";
+document.getElementById("info").innerHTML = ret.data.url + " | " + (pagenumber - 1) + " Commits";
 console.log(posts)
 for (let i = 0; i < posts.length; i++) {
 pagenumber = pagenumber - 1
-if(posts[i].split("!!!time!!!")[0] == "")
+if(posts[i].split("!!!time!!!")[0] == "" || posts[i].split("!!!time!!!")[0] == undefined)
 {
 }
 else
 {
-    html = html + "<article><img style=\"width:30px; height:30px; border-radius:50%\; vertical-align:center\" src=\"" + posts[i].split("!!!pfp!!!")[1] + "\"><p style=\"text-align: center; font-size:14px\"><i>Contributed by <b>" + posts[i].split("!!!uploader!!!")[1] + "</b> on <b>" + posts[i].split("!!!time!!!")[1] + "</b></i></p><hr><label style=\"vertical-align:middle; font-family:'Roboto Mono'; font-size:15px\">" + posts[i].split("!!!time!!!")[0].replace(/linebreak/g, "<br>") + "</label><hr><p style=\"text-align:center; font-size:13px\"><i>Page " + pagenumber + "</i></p></article><br><br>"
+    html = html + "<article><img style=\"width:30px; height:30px; border-radius:50%\; vertical-align:center\" src=\"" + posts[i].split("!!!pfp!!!")[1] + "\"><p style=\"text-align: center; font-size:14px\"><i>Contributed by <b>" + posts[i].split("!!!uploader!!!")[1] + "</b> on <b>" + posts[i].split("!!!time!!!")[1] + "</b></i></p><hr><label style=\"vertical-align:middle; font-family:'Roboto Mono'; font-size:15px\">" + posts[i].split("!!!time!!!")[0].replace(/linebreak/g, "<br>") + "</label><hr><p style=\"text-align:center; font-size:13px\"><i>Commit " + pagenumber + "</i></p></article><br><br>"
 //console.log("Post: " + posts[i].split("!!!time!!!")[0] + "\nTime: " + posts[i].split("!!!time!!!")[1] + "\nUploader: " + posts[i].split("!!!uploader!!!")[1] + "\nPage Number: " + pagenumber)
 }
 }
