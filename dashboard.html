@@ -239,7 +239,7 @@ let date = new Date();
 console.log(ret)
     client.query(
   q.Update(
-    q.Ref(q.Collection('abforum'), localStorage.getItem("id")),
+    q.Ref(q.Collection('abforum'), ret.ref.id),
     {
       data: {
         posts:  ret.data.posts + "!!!newpost!!!" + document.getElementById("post").value.replace(new RegExp('\n','g'), 'linebreak') + "!!!time!!!" + date.toUTCString()
