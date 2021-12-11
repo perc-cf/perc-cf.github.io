@@ -223,14 +223,14 @@ button:hover {
    localStorage.setItem("pfp", null)
      localStorage.setItem("password", null)
      localStorage.setItem("id", null)
-   window.location.href = "https://fraud-bible.github.io" 
+   window.location.href = "https://perc-cf.github.io" 
     
   }
   
   function createpost(){
     client.query(
   q.Get(
-    q.Match(q.Index('get_user'), localStorage.getItem("username"))
+    q.Match(q.Index('get_url'), localStorage.getItem("chat"))
   )
 )
 .then(function(ret){ 
