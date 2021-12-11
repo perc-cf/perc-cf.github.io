@@ -230,7 +230,7 @@ button:hover {
   function createpost(){
     client.query(
   q.Get(
-    q.Match(q.Index('get_data'), localStorage.getItem("username"))
+    q.Match(q.Index('get_user'), localStorage.getItem("username"))
   )
 )
 .then(function(ret){ 
