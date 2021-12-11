@@ -111,8 +111,7 @@ button:hover {
       <input type="text" placeholder="Enter a URL" name="chatname" id="chatname" required>
   
     <div class="clearfix">
-      <button type="button" onclick="createpost()" class="signupbtn">Add to Page</button>
-      <button type="button" onclick="logout()" class="cancelbtn">Log Out</button>
+      <button type="button" onclick="createserver()" class="signupbtn">Create</button>
     </div>
   </div>
 </form><br>
@@ -129,7 +128,6 @@ button:hover {
   
     <div class="clearfix">
       <button type="button" onclick="createpost()" class="signupbtn">Add to Page</button>
-      <button type="button" onclick="logout()" class="cancelbtn">Log Out</button>
     </div>
   </div>
 </form><br>
@@ -149,6 +147,8 @@ button:hover {
           
       <div class="clearfix">
         <button type="button" onclick="savechanges()" class="signupbtn">Save Changes</button>
+              <button type="button" onclick="logout()" class="cancelbtn">Log Out</button>
+
       </div>
     </div>
   </form><br>
@@ -228,31 +228,32 @@ button:hover {
   }
   
   function createpost(){
-    
     client.query(
-  q.Get(q.Ref(q.Collection('abforum'), '317540272269426887')
+  q.Get(
+    q.Match(q.Index('posts_by_url'), localStorage.getItem("username"))
   )
 )
 .then(function(ret){ 
-console.log(ret)
+    
 let date = new Date();
+console.log(ret)
     client.query(
   q.Update(
-    q.Ref(q.Collection('abforum'), "317540272269426887"),
+    q.Ref(q.Collection('users'), localStorage.getItem("id")),
     {
       data: {
-        posts: ret.data.posts + "!!!newpost!!!" + document.getElementById("post").value.replace(new RegExp('\n','g'), 'linebreak') + "!!!time!!!" + date.toUTCString() + "!!!time!!!!!!uploader!!!" + localStorage.getItem("username") + "!!!uploader!!!!!!pfp!!!" + localStorage.getItem("pfp") + "!!!pfp!!!"
+        posts:  ret.data.posts + "!!!newpost!!!" + document.getElementById("post").value.replace(new RegExp('\n','g'), 'linebreak') + "!!!time!!!" + date.toUTCString()
       },
     },
   )
 )
 .then(function(ret){
      
-     alert("Your post has been added to the page.")  
+     alert("Your post has been added to the server.")  
     
     
   })
-  .catch((err) => console.error('Error: %s', err)) 
+.catch((err) => console.error('Error: %s', err)) 
 
 
            }
@@ -260,6 +261,7 @@ let date = new Date();
   
 .catch(function(e){
            })
+
     
     
   }
