@@ -337,7 +337,7 @@ alert("This name is taken!")
     client.query(
   q.Create(
     q.Collection('abforum'),
-    { data: { url: document.getElementById("chatname").value.replace(/\s/g, "-")},
+    { data: { url: document.getElementById("chatname").value.replace(/\s/g, "-")}},
   )
 )
 .then(function(ret){
