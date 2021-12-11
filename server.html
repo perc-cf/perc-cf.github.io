@@ -125,7 +125,7 @@ document.getElementById("info").innerHTML = ret.data.url + " | " + (pagenumber -
 console.log(posts)
 for (let i = 0; i < posts.length; i++) {
 pagenumber = pagenumber - 1
-if(posts[i].split("!!!time!!!")[0] == "" || posts[i].split("!!!time!!!")[0] == undefined)
+if(posts[i].split("!!!time!!!")[0] == "" || posts[i].split("!!!time!!!")[0] == "undefined")
 {
 }
 else
