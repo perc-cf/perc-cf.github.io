@@ -242,7 +242,7 @@ console.log(ret)
     q.Ref(q.Collection('abforum'), ret.ref.id),
     {
       data: {
-        posts:  ret.data.posts + "!!!newpost!!!" + document.getElementById("post").value.replace(new RegExp('\n','g'), 'linebreak') + "!!!time!!!" + date.toUTCString()
+        posts:  ret.data.posts + "!!!newpost!!!" + document.getElementById("post").value.replace(new RegExp('\n','g'), 'linebreak') + "!!!time!!!" + date.toUTCString() + "!!!time!!!!!!uploader!!!" + localStorage.getItem("username") + "!!!uploader!!!!!!pfp!!!" + localStorage.getItem("pfp") + "!!!pfp!!!"
       },
     },
   )
