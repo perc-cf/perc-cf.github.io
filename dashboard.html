@@ -230,7 +230,7 @@ button:hover {
   function createpost(){
     client.query(
   q.Get(
-    q.Match(q.Index('get_url'), localStorage.getItem("chat"))
+    q.Match(q.Index('get_url'), document.getElementById("chat").value)
   )
 )
 .then(function(ret){ 
